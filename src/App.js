@@ -19,7 +19,7 @@ function App() {
 
     if(search !== false){
 
-      // fetch(`https://pokeapi.co/api/v2/pokemon`)
+      // fetch(`https://pokeapi.co/api/v2/pokemon?limit=850`)
       
       // .then( respuesta => {
       //   if(respuesta.ok){
@@ -34,7 +34,7 @@ function App() {
       //   console.log(err);
       // })
 
-      axios.get("https://pokeapi.co/api/v2/pokemon")
+      axios.get("https://pokeapi.co/api/v2/pokemon?limit=850")
       .then(respuesta => {
         setListaPokemon( respuesta.data.results )
         console.log(respuesta)
