@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import './App.css';
 import FormularioPokemon from './Componentes/FormularioPokemon/FormularioPokemon';
 import Pokemon from './Componentes/Pokemon/Pokemon';
+import axios from 'axios';
+
 
 function App() {
   // const [nombrePokemon, setNombrePokemon] = useState('');
@@ -17,20 +19,30 @@ function App() {
 
     if(search !== false){
 
-    fetch(`https://pokeapi.co/api/v2/pokemon`)
-    
-    .then( respuesta => {
-      if(respuesta.ok){
-        return respuesta.json();
-      }
-    })
-    .then( datos => {
-      // console.log(datos);
-      setListaPokemon( datos.results)
-    })
-    .catch( err => {
-      console.log(err);
-    })
+      // fetch(`https://pokeapi.co/api/v2/pokemon`)
+      
+      // .then( respuesta => {
+      //   if(respuesta.ok){
+      //     return respuesta.json();
+      //   }
+      // })
+      // .then( datos => {
+      //   // console.log(datos);
+      //   setListaPokemon( datos.results)
+      // })
+      // .catch( err => {
+      //   console.log(err);
+      // })
+
+      axios.get("https://pokeapi.co/api/v2/pokemon")
+      .then(respuesta => {
+        setListaPokemon( respuesta.data.results )
+        console.log(respuesta)
+  
+      })
+      .catch( err => {
+        console.log(err);
+      })
 
   }},[search])
 
